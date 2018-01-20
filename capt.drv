@@ -1,0 +1,63 @@
+#include <font.defs>
+#include <media.defs>
+
+
+Copyright "Copyright (C) 2011 Alexey Galakhov"
+Version 0.1.0
+
+Manufacturer "Canon"
+Font *
+
+// Dummy filter. Everything is done by the backend.
+DriverType custom
+Filter application/vnd.cups-raster 1 cupscat
+
+{
+  // 4736x6968 b&w printers, 592 bytes per line
+  ColorDevice no
+
+  // FIXME top and bottom margins are incorrect
+  HWMargins 13.35 13.35 13.35 13.35
+  *MediaSize A4
+
+  {
+    // Mode 1 (SCoA) with 104 lines per band
+    *ColorModel Gray/Grayscale k chunky 1
+    *Resolution k 1 104 592 0 "600dpi/600 DPI"
+    {
+      ModelName "LBP-810 CAPT GDI printer (experimental)"
+      PCFileName "Canon-LBP-810.ppd"
+    }
+    {
+      ModelName "LBP-1120 CAPT GDI printer (experimental)"
+      PCFileName "Canon-LBP-1120.ppd"
+    }
+  }
+  {
+    // Mode 2 (HiSCoA) with 70 lines per band
+    *ColorModel Gray/Grayscale k chunky 2
+    *Resolution k 1 70 592 0 "600dpi/600 DPI"
+
+    {
+      ModelName "LBP-2900 CAPT GDI printer"
+      PCFileName "Canon-LBP-2900.ppd"
+    }
+    {
+      ModelName "LBP-3000 CAPT GDI printer"
+      PCFileName "Canon-LBP-3000.ppd"
+    }
+    {
+      ModelName "LBP-3010 CAPT GDI printer"
+      PCFileName "Canon-LBP-3010.ppd"
+    }
+    {
+      ModelName "LBP-3018 CAPT GDI printer"
+      PCFileName "Canon-LBP-3018.ppd"
+    }
+    {
+      ModelName "LBP-3050 CAPT GDI printer"
+      PCFileName "Canon-LBP-3050.ppd"
+    }
+  }
+}
+

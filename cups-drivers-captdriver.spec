@@ -6,7 +6,7 @@
 
 Summary:	Cups filter for Canon CAPT printers
 Name:		cups-drivers-%{filter_name}
-Version:	0~git%{date}
+Version:	0_git%{date}
 Release:	0
 License:	GPLv3+
 Group:		System/Printing
