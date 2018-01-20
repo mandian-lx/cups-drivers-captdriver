@@ -63,6 +63,10 @@ autoreconf -fiv
 %install
 %makeinstall_std
 
+# filter
+install -dm 0755 %{buildroot}%{_libdir}/cups/filter/
+install -pm 0755 src/rastertocapt %{buildroot}%{_libdir}/cups/filter/
+
 # PPD files
 install -dm 0755 %{buildroot}%{_datadir}/cups/model/%{filter_name}/
 #install -pm 0644 Canon-LBP-*.ppd %{buildroot}%{_datadir}/cups/model/%{filter_name}/
