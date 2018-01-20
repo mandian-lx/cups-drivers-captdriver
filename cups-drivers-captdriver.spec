@@ -16,7 +16,7 @@ Source0:	https://github.com/agalakhov/%{filter_name}/archive/%{commit}/%{filter_
 # https://sourceforge.net/p/foo2capt/foo2capt/ci/master/tree/capt.drv?format=raw
 Source1:	capt.drv
 
-#BuildRequires:	cups-common
+BuildRequires:	cups-common
 BuildRequires:	cups-devel
 
 %description
@@ -32,7 +32,7 @@ Actually it supports the following models:
   * LBP3050 (experimental)
 
 %files
-%{_bindir}/rastertocapt
+%{_libdir}/cups/filter/rastertocapt
 %{_datadir}/cups/model/%{filter_name}/*ppd
 %doc README
 %doc SPECS
@@ -47,13 +47,7 @@ Actually it supports the following models:
 %setup -qn %{filter_name}-%{commit}
 
 # Create a different PPD file for each supported model LBP-3010
-# FIXME: use ppdc instead
-# cp %{SOURCE1} .
-# ppdc capt.drv
-for m in 3000 3010 3018 3050
-do
-	sed -e "s|LBP-2900|LBP-${m}|g" Canon-LBP-2900.ppd > Canon-LBP-${m}.ppd
-done
+ppdc %{SOURCE1}
 
 %build
 autoreconf -fiv
@@ -61,7 +55,7 @@ autoreconf -fiv
 %make
 
 %install
-%makeinstall_std
+#% makeinstall_std
 
 # filter
 install -dm 0755 %{buildroot}%{_libdir}/cups/filter/
