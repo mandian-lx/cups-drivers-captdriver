@@ -48,7 +48,13 @@ Actually it supports the following models:
 %setup -qn %{filter_name}-%{commit}
 
 # Create a different PPD file for each supported model LBP-3010
-ppdc %{SOURCE1}
+# FIXME: use ppdc instead
+#cp %{SOURCE1} .
+#ppdc capt.drv
+for m in 3000 3010 3018 3050
+do
+	sed -e "s|LBP-2900|LBP-${m}|g" Canon-LBP-2900.ppd > Canon-LBP-${m}.ppd
+done
 
 %build
 autoreconf -fiv
