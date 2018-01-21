@@ -16,6 +16,7 @@ Source0:	https://github.com/agalakhov/%{filter_name}/archive/%{commit}/%{filter_
 # https://sourceforge.net/p/foo2capt/foo2capt/ci/master/tree/capt.drv?format=raw
 Source1:	capt.drv
 
+BuildRequires:	cups
 BuildRequires:	cups-common
 BuildRequires:	cups-devel
 
